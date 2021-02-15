@@ -1,22 +1,20 @@
 package com.example.vamosrachar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Locale;
+import androidx.appcompat.app.AppCompatActivity;
 
-import static java.sql.DriverManager.println;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     EditText valueTxt; //Input do valor
@@ -43,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         isFilled = false;
 
-        myLocale = new Locale("pt", "BR"); //Colocando voz em português
+        //myLocale = new Locale("pt", "BR"); //Colocando voz em português
         valueTxt.addTextChangedListener(new TextWatcher() { //Checa mudança no valor
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -85,11 +83,11 @@ public class MainActivity extends AppCompatActivity {
             value = Float.parseFloat(valueTxt.getText().toString());
             numberOfPeople = Float.parseFloat(numberOfPeopleTxt.getText().toString());
             result = value/numberOfPeople;
-            resultTxt.setText("R$" + String.valueOf(result));
-            message = "O valor de R$ "+valueTxt.getText().toString()+" dividido por "+numberOfPeopleTxt.getText().toString()+" pessoas é de: R$ " + result;
+            resultTxt.setText(String.format(getString((R.string.total)), result));
+            message = String.format(getString(R.string.sentence), valueTxt.getText().toString(), numberOfPeopleTxt.getText().toString(), result.toString());
         }else{
             isFilled = false;
-            message = "Operação inválida";
+            message = getString(R.string.fail_msg);
             resultTxt.setText(message);
         }
     }
@@ -98,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     public void TTS(View view) {
         if(isFilled){
             tts = new TextToSpeech(getApplicationContext(), status -> {
-                tts.setLanguage(myLocale);
+                //tts.setLanguage(myLocale);
                 tts.speak(message, TextToSpeech.QUEUE_ADD, null);
             });
         }else{
@@ -113,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, message);
             sendIntent.setType("text/plain");
-            Intent shareIntent = Intent.createChooser(sendIntent, "Envie para seus amigos");
+            Intent shareIntent = Intent.createChooser(sendIntent, getString(R.string.share_msg));
             startActivity(shareIntent);
         }else{
             warningMessage();
@@ -121,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void warningMessage(){
-        Toast.makeText(getApplicationContext(), "Preencha os campos corretamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.wrng_msg), Toast.LENGTH_SHORT).show();
     }
 
 

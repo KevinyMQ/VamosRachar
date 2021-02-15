@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Split the Bill</string>
+    <string name="title">Split It</string>
+    <string name="total_placeholder">Result</string>
+    <string name="total">Result: $ %1$.2f</string>
+    <string name="sentence">The value of $ %1$s divided by %2$s people is: $ %3$s</string>
+    <string name="share_msg">Share with your friends</string>
+    <string name="wrng_msg">Fill the fields properly</string>
+    <string name="fail_msg">Invalid operation</string>
+
+    <string name="value_description">Value text field</string>
+    <string name="n_people_description">Number of people text field</string>
+
+    <string name="value_hint">Type the value</string>
+    <string name="n_people_hint">Number of people</string>
+
+    <string name="tts_description">Hear result</string>
+    <string name="share_description">Share</string>
+</resources>

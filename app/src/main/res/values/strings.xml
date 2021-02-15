@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">VamosRachar</string>
+    <string name="app_name">Vamos Rachar</string>
+    <string name="title">Rachar</string>
+    <string name="total_placeholder">Total</string>
+    <string name="total">Total: R$ %1$.2f</string>
+    <string name="sentence">O valor de R$ %1$s dividido por %2$s pessoas é de: R$ %3$s</string>
+    <string name="share_msg">Envie para seus amigos</string>
+    <string name="wrng_msg">Preencha os campos corretamente</string>
+    <string name="fail_msg">Operação inválida</string>
+
+    <string name="value_description">Campo de texto para o valor</string>
+    <string name="n_people_description">Campo de texto para o número de pessoas</string>
+
+    <string name="value_hint">Digite o valor</string>
+    <string name="n_people_hint">Total de pessoas</string>
+
+    <string name="tts_description">Ouvir resultado</string>
+    <string name="share_description">Compartilhar</string>
 </resources>
